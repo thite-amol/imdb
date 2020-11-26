@@ -8,6 +8,10 @@ class Genre(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=400)
 
+    class Meta:
+        verbose_name = "Genre"
+        verbose_name_plural = "Genres"
+
     def __str__(self):
         return self.name
 
@@ -22,3 +26,7 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "Movie"
+        verbose_name_plural = "Movies"

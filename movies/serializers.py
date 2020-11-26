@@ -22,7 +22,7 @@ class MovieSerializer(serializers.HyperlinkedModelSerializer):
 
         for i in genre_validated_data:
             genre, created = Genre.objects.get_or_create(name=i['name'])
-            movie.add(genre)
+            movie.genre.add(genre)
         movie.save()
 
         return movie
