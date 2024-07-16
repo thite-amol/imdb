@@ -1,14 +1,9 @@
-from django.conf.urls import include
-from django.urls import include, path
-from rest_framework import routers
-from rest_framework.authtoken.views import obtain_auth_token
-from . import views
+from django.urls import path
 
-router = routers.DefaultRouter()
-router.register(r'movies', views.MovieViewSet)
-router.register(r'genre', views.GenreViewSet)
+from movies.views import MovieCreateView, MovieRUDView, MoviesListView
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    path("movies/", MoviesListView.as_view(), name="All Movies"),
+    path("movie", MovieCreateView.as_view(), name="Movie"),
+    path("movie/<int:pk>/", MovieRUDView.as_view(), name="Delete Movie"),
 ]
